@@ -144,7 +144,7 @@ modules are again Noetherian.
 \end{corollary}
 
 \begin{proof}
-  \autoref{eq:diagram-for-five-lemma-proof-of-sec-of-noetherian-modules}
+  
   This is an immediate consequence of 
   \autoref{prop:middle-in-sec-noetherian-equiv-all-noetherian} since
   the sequence

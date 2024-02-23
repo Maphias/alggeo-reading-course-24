@@ -1,0 +1,177 @@
+\chapter{Algebraic varieties}
+
+We collect some basic results from the first chapter of
+\cite{görtz2010algebraic}.
+
+\section{Zariski topology and algebraic sets}
+
+
+\begin{definition}
+  \label{def:vanishing-sets}
+  Consider a subset $M\subset \field{k}[T_1,\cdots ,T_n ] \eqqcolon
+  \field{k}[\underline{T}]$. We call define the \textit{vanishing set}, or set
+  of common zeros, of the polynomials in $M$ by
+  \begin{align*}
+    V(M)\coloneqq \{(t_1,\cdots, t_n)\in \field{k}^n\mid \forall f\in
+    M \; ; \; f(t_1,\cdots, t_n)=0\}.
+  \end{align*}
+\end{definition}
+
+
+\begin{definition}
+  \label{def:zariski-topology}
+  The sets $V(\mathfrak{a})$ where $\mathfrak{a}$ runs through the set
+  of ideals of $\field{k}[\underline{T}]$, are the closed sets of a
+  topology on $\field{k}^n$, called the Zariski topology.
+\end{definition}
+
+\begin{exercise}
+  Prove that this is a well defined topology, or alternatively read
+  the proof in \cite[Prop. 1.3]{görtz2010algebraic}.
+\end{exercise}
+
+\begin{definition}
+  \label{def:algebraic-space}
+  We call the topological space $(\field{k}^n, \{V(\mathfrak{a})\}_{\mathfrak{a}
+    \; \text{is ideal}})$ of the space $\field{k}^n$ with the Zariski
+  topology the \textit{affine space of dimension $n$} and denote it
+  with $\field{A}^n(\field{k})$.
+
+  Closed subspaces of $\field{A}^n(\field{k})$ are called
+  \textit{affine algebraic sets.}
+\end{definition}
+
+Sets consisting of one point $x =(x_1,\cdots ,x_n) \in
+\field{A}^n(\field{k})$ are closed because $\{x\} = V
+(\mathfrak{m}_x)$, where $\mathfrak{m}_x =(T_1−x_1,\cdots ,T_n−x_n)$ is the kernel of the evaluation homomorphism $\field{k}[\underline{T} ] \rightarrow \field{k}$ which sends $f$ to $f (x)$. As finite unions of closed sets are again closed, we see that all finite subsets of $\field{A}^n(\field{k})$ are close.
+
+\begin{definition}
+  \label{def:radical-of-an-ideal}
+  Let $\ring{A}$ be a ring. For an ideal $\mathfrak{a} \subset
+  \ring{A}$ we call $\rad \mathfrak{a} \coloneqq \{f\in \ring{A} \mid
+  \exists r\ in \naturals_0 \text{ such that } f^r \in \mathfrak{a}\}$
+  the \textit{radical} of a.
+
+  If $\rad\mathfrak{a} = \mathfrak{a}$ we call $\mathfrak{a}$ a
+  \textit{radical ideal}.
+\end{definition}
+
+\begin{proposition}
+  \label{prop:properties-of-the-radical}
+  Let $\ring{A}$ be a ring and $\mathfrak{a}$ an ideal.
+  \begin{enumerate}[label=(\roman*)]
+  \item We have $\rad \mathfrak{a} = \rad (\rad \mathfrak{a})$.
+  \item If $\ring{A}$ is finitely generated as a $\field{k}$ algebra
+    for a field (not necessarily algebraically closed), we have
+    \begin{align*}
+      \rad \mathfrak{a}
+      =
+      \bigcap_{\substack{\mathfrak{a}\subset
+      \mathfrak{p}\subset \ring{A}\\
+      \mathfrak{p}\text{ prime ideal}}}
+      \mathfrak{p}
+      =
+      \bigcap_{\substack{\mathfrak{a}\subset
+      \mathfrak{m}\subset \ring{A}\\
+      \mathfrak{m}\text{ maximal ideal}}}
+      \mathfrak{m}
+    \end{align*}
+  \item We have $V(\rad{\mathfrak{a}})=V(\mathfrak{a})$.
+  \item The ring $\ring{A}/\mathfrak{a}$ is \textit{reduced}, i.e.\ it
+    contains no non-zero idempotent elements.
+  \item Every prime ideal is radical.
+  \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+  \label{def:vanishing-ideal}
+  For $Z\subset \field{A}^n(\field{k})$ we define the vanishing ideal
+  of the subset $Z$ by
+  \begin{align*}
+    I(Z) \coloneqq \{f\in \field{k}[\underline{T}]\mid \forall x\in Z
+    \text{ we have } f(x) = 0\}\subset \field{k}[\underline{T}].
+  \end{align*}  
+\end{definition}
+
+\begin{proposition}
+  \label{prop:vanishing-ideals-and-vanishing-sets-in-affine-space}
+  Consider the affine space $\field{A}^n (\field{k})$. We have the
+  following results:
+  \begin{enumerate}[label=(\roman*)]
+  \item For a subset $Z$ we have
+    \begin{align*}
+      I(Z)= \bigcap_{x\in Z} \mathfrak{m}_x.
+    \end{align*}
+  \item For an ideal $\mathfrak{a}\subset \field{k}[\underline{T}]$ we
+    have
+    \begin{align*}
+      I(V(\mathfrak{a})) = \rad \mathfrak{a}
+    \end{align*}
+  \item For a subset $Z\subset \field{A}^n(\field{k})$ we have
+    \begin{align*}
+      V(I(Z)) = \overline{Z}
+    \end{align*}
+  \end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+  \label{cor:correspondence-ideals-and-subsets}
+  The maps
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 2cm, row sep=1.5cm]
+      \{\text{radical ideals }\mathfrak{a}\text{ of
+      }\field{k}[\underline{T}]\} \ar[r,shift left=1, "\mathfrak{a}\mapsto
+      V(\mathfrak{a})"]
+      &
+      \{ \text{closed subsets } Z \text{ of }
+      \field{A}^n(\field{k}) \} \ar[l,shift left=1," I(Z)\mapsfrom Z"]
+    \end{tikzcd}
+  \end{equation}
+  are mutually inverse bijections, whose restrictions define a
+  bijection
+    \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 2cm, row sep=1.5cm]
+      \{
+      \text{maximal ideals of } \field{k}[\underline{T}]
+      \}
+      \ar[r,leftrightarrow]
+      &
+      \{
+      \text{points of }\field{A}^n(\field{k})
+      \}
+    \end{tikzcd}.
+  \end{equation}
+\end{corollary}
+
+\section{Irreducible topological  spaces}
+
+\begin{definition}
+  \label{def:irreducible-topological-spaces}
+  A non-empty topological space $X$ is called \textit{irreducible} if
+  $X$ cannot be expressed as the union of two proper closed subsets.
+
+  A non-empty subset $Z$ of $X$ is called \textit{irreducible} if $Z$ is irreducible when we endow it with the induced topology.
+\end{definition}
+
+\begin{proposition}
+  \label{prop:characterization-of-irreducible-topological-spaces}
+  Let $X$ be a non-empty topological space. The following assertions
+  are equivalent.
+  \begin{enumerate}[label=(\roman*)]
+  \item $X$ is irreducible.
+  \item Any two non-empty open subsets of $X$ have a non-empty intersection.
+  \item Every non-empty open subset is dense in $X$.
+  \item Every non-empty open subset is connected.
+  \item Every non-empty open subset is irreducible.
+  \end{enumerate}
+\end{proposition}
+
+\begin{corollary}
+  \label{cor:maps-from-irreducible-sets}
+  Let $f \colon X \rightarrow Y$ be a continuous map of topological spaces. If $Z \subset X$ is an irreducible subspace, its image $f (Z)$ is irreducible.
+\end{corollary}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
