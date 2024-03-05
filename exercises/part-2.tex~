@@ -1,0 +1,152 @@
+\chapter{Exercises Part 2}
+
+\section{Projective varieties}
+
+\begin{exercise}
+  See \cite[Exercise 1.22]{görtz2010algebraic}.
+  Let $L_1$ and $L_2$ be two disjoint lines in
+  $\mathbb{P}^3(\field{k})$.
+  \begin{enumerate}[label=(\roman*)]
+  \item Show that there exists a change of coordinates such that $L_1 =
+    V_+(X_0,X_1)$ and $L_2 = V_+(X_2,X_3)$.
+  \item Let $Z = L_1 \cup L_2$. Determine the homogeneous radical ideal $\mathfrak{a}$ such that $V_+(\mathfrak{a})=Z$ (Exercise 1.21).
+  \end{enumerate}
+\end{exercise}
+
+\section{Veronese embedding}
+
+\begin{exercise}
+  \cite[Exercise 1.30]{görtz2010algebraic}.
+  Let $n, d > 0$ be integers. Let $M_0,\cdots ,M_N \in
+  \field{k}[X_0,\cdots ,X_n]$ be all monomials in $X_0,\cdots ,X_n$ of
+  degree $d$.
+  \begin{enumerate}[label=(\roman*)]
+  \item Define a $\field{k}$-algebra homomorphism
+    \begin{align*}
+      \theta \colon
+      \field{k}[Y_0,\cdots,Y_N ] \rightarrow
+      \field{k}[X_0,\cdots,X_n], \quad Y_i\mapsto  M_i
+    \end{align*}
+   and let $\mathfrak{a} =\ker \theta$. Show that $\mathfrak{a}$ is a
+   homogeneous prime ideal (Exercise 1.20). Let
+   $V_+(\mathfrak{a})\subset \mathbb{P}^N (\field{k})$ the projective
+   variety defined by $\mathfrak{a}$ (Exercise 1.21).
+ \item Consider the morphism
+   \begin{align*}
+     v_d \colon \mathbb{P}^n(\field{k}) \rightarrow \mathbb{P}^N
+     (\field{k}),\quad(x_0 : \cdots : x_n) \mapsto
+     (M_0(x_0,\cdots,x_n):\cdots : M_N (x_0,\cdots,x_n)),
+   \end{align*}
+   and show that $v_d$ induces an isomorphism $\mathbb{P}^n(\field{k})
+   \cong V_+(\mathfrak{a})$ of prevarieties. Is $V_+(\mathfrak{a})$ a
+   linear subspace of $\mathbb{P}^N (\field{k})$?
+   \item Let $f \in \field{k}[X_0,\cdots ,X_n]$ be homogeneous of degree $d$. Show that $v_d(V_+(f ))$ is the intersection of $V_+(\mathfrak{a})$ and a linear subspace of $\mathbb{P}^N (\field{k})$. The morphism $v_d$ is called the $d$-Uple embedding or $d$-fold Veronese embedding.
+  \end{enumerate}
+\end{exercise}
+
+\section{Spectra of rings}
+
+\begin{exercise}
+  Find two classes of rings or your favourite two specific rings and
+  classify their spectrum.
+\end{exercise}
+
+\begin{exercise}
+  See \cite[Exercise 2.9]{görtz2010algebraic}. For valuation rings see
+  \cite[(B.13) (p562)]{görtz2010algebraic}.
+  Let $\Gamma$ be a totally ordered abelian group. A subgroup $\Delta$
+  of $\Gamma$ is called isolated if $0 \leq \gamma \leq \delta$ and
+  $\delta \in \Delta$ implies $\gamma\in \Delta$.
+  \begin{enumerate}[label=(\roman*)]
+  \item Let $A$ be a valuation ring, $K =\Frac A$. Show that $\mathfrak{p}
+    \mapsto A_{\mathfrak{p}}$ is an inclusion reversing bijection from
+    $\Spec A$ onto the set of rings $B$ with $A \subset B \subset K$
+    and that such a ring $B$ is a valuation ring of $K$. Its inverse
+    is given by sending $B$ to its maximal ideal (which is contained
+    in $A$).
+  \item Let $A$ be a valuation ring with value group $\Gamma$. For
+    every isolated subgroup $\Delta$ of $\Gamma$ set
+    $\mathfrak{p}_\Delta \coloneqq \{  a\in A \mid v(a) \notin \Delta
+    \}$. Show that $\Delta \mapsto \mathfrak{p}_\Delta$ defines a
+    order reversing bijection between the set of isolated subgroups of
+    $\Gamma$ and $\Spec A$ (both totally ordered by inclusion).
+  \item Show that the value groups of the valuation ring
+    $A_{\mathfrak{p}_\Delta}$ is isomorphic to $\Gamma/\Delta$ and the
+    value groups of the valuation ring $A/\mathfrak{p}_\Delta$ is
+    isomorphic to $\Delta$.
+  \item For an arbitrary totally ordered abelian group $\Gamma$ let
+    $R = \field{k}[\Gamma]$ be the group algebra of $\Gamma$ over
+    some field $\field{k}$. Write elements of $u \in A$ as finite
+    sums $u = \sum_{\gamma}a_\gamma e_\gamma$ . Define a map $v
+    \colon R \setminus \{0\}\rightarrow \Gamma$ by sending $u$ to
+    the minimal $\gamma \in \Gamma$ such that $\alpha_\gamma \neq
+    0$. Show that $R$ is an integral domain and that $v$ can be
+    extended to a valuation $v$ on $K =\Frac R$ with value group
+    $\Gamma$. In particular $A \coloneqq \{ x\in K \mid v(x) \geq  0
+    \}$ is a valuation ring with value group $\Gamma$.
+  \item Let $I$ be a well-ordered set. Endow $\integers^I$ with
+    the lexicographic order (i.e., we set $(n_i){i\in I} <
+    (m_i){i\in I}$ if and only if $J\coloneqq \{ i\in I \mid m_i
+    \neq n_i \}$ is non-empty and $n_{i_J} <m_{i_J}$ where $i_J$ is
+    the smallest element of $J$). Show that $\integers^I$ is a
+    totally ordered abelian group and that for all $k \in I$ the
+    subsets $\Gamma_{\geq k}$ of $(n_i)_{i} \in \integers^I$ such
+    that $n_i =0$ for all $i<k$ are isolated subgroups of
+    $\integers^I$.
+  \item Deduce that for every cardinal number $k$ there are
+    valuation rings whose spectrum has cardinality $\geq k$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  For $(i)$ consider the map $\mathfrak{p} \mapsto
+  A_\mathfrak{p}$. This reverses orientation, i.e.\ if
+  $q\subset p$ for two prime ideals, then $(A\setminus
+  \mathfrak{p} )^{-1} = A_\mathfrak{p} \subset
+  A_\mathfrak{q} = (A\setminus
+  \mathfrak{q})^{-1}A$. This is also a valuation ring since for any
+  $a\in \Frac A = K$ either $a\in A$ or $a^{-1}\in A$
+  is naturally satisfied for $A\subset A_\mathfrak{p}$.
+
+  To see that this is a bijection, we consider a local ring
+  $A\subset B \subset K$, which we map to the preimage under the
+  inclusion $A \subset B$ of its unique maximal ideal
+  $\mathfrak{m}_B$. This is inverse to the localization above since
+  \begin{align*}
+    \mathfrak{m}_{A_\mathfrak{p}} = \mathfrak{p} A_\mathfrak{p}
+  \end{align*}
+  for a ring $A_\mathfrak{p}$ this is given by $\mathfrak{p}$.
+
+  On the other hand for a local ring $A \subset B \subset K$ the
+  localization at the preimage of the maximal ideal $\mathfrak{m}_B$
+  has an inclusion into $B$ by the universal property of the
+  localization. Since both of these rings are maximal with respect to
+  domination and local they have to coincide.
+
+  \vspace{\baselineskip}
+
+  For $(ii)$ we can easily see that the set of isolated subgroups is
+  totally ordered.
+  Consider the map $\Delta \mapsto \mathfrak{p}_\Delta$. The image is
+  a prime ideal since for $ab\in \mathfrak{p}_\Delta$ we have $v(ab) =
+  v(a) + v(b) \notin \Delta$. This means that either $a$ or $b$
+  already have to be in $\mathfrak{p}_\Delta$.
+
+  We define the following inverse:
+  \begin{align*}
+    \mathfrak{p} \mapsto v(A \setminus \mathfrak{p}).
+  \end{align*}
+  This is a group since for $p,q\in \mathfrak{p}$ we have $v(p)+
+  v(q) = v(pq)\in v(\mathfrak{p})$.
+
+  We check the inverses:
+  \begin{align*}
+    v(\mathfrak{p}_\Delta) = 
+  \end{align*}
+  
+\end{proof}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

@@ -1,0 +1,68 @@
+\chapter{Sheaves and presheaves}
+
+A sheaf can be characterized as follows:
+
+The diagram
+\begin{equation}
+  \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.5cm]
+    \sheaf{F}(U) \ar[r, "\iota"] &  \prod_{i\in I} \sheaf{F}(U_i)\ar[r ,
+    shift right=1, swap ] \ar[r,shift left=1] & \prod_{i,j \in I}
+    \sheaf{F}(U_i \cap U_j)
+  \end{tikzcd}
+\end{equation}
+is an equalizer where $\iota$ is a monomorphism.
+
+We define
+\begin{align*}
+  \iota \colon \sheaf{F}( U)\rightarrow \prod_{i\in I}\sheaf{F}(U_i) ,
+  \quad \sigma \mapsto (\sigma \at{U_i})_{i\in I},\\
+  g_{k,\ell} \colon \prod_{i\in I}\sheaf{F}(U_i) \rightarrow
+  \sheaf{F}(U_k\cap U_\ell),
+  \quad g_{k,\ell} = \res_{U_k,U_k\cap U_\ell} \circ \pr_k.
+\end{align*}
+
+and consider the following diagram and use the universal property of
+the product to obtain a map $\prod_{\ell}\prod_k g_{k,\ell}$
+\begin{equation}
+  \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.5cm]
+    \prod_{i\in I}\sheaf{F}(U_i)
+    \ar[dr, "\prod_k g_{k,\ell}",swap]
+    \ar[r , "g_{k,\ell}"]
+    \ar[d, "\prod_\ell \prod_k g_{k,\ell}",swap]
+    &
+    \sheaf{F}(U_k\cap U_\ell)
+    \\
+    \prod_{\ell \in I } \prod_{k\in I} \sheaf{F}(U_k\cap U_\ell )
+    \ar[r, "\pr_\ell"]
+    &
+    \prod_{k\in I} \sheaf{F}(U_k \cap U_\ell )
+    \ar[u, "\pr_k", swap]
+  \end{tikzcd}
+\end{equation}
+But similarly we can define the product $\prod_\ell
+\prod_k g_{\ell,k}$ by switching the indices in $g_{k,\ell}$.
+
+This leads to two maps $\pi_{\ell,k}, \pi_{k,\ell} \colon \prod_{i\in
+  I} \sheaf{F}(U_i) \rightarrow \prod_{i,j \in I}
+\sheaf{F}(U_i \cap U_j)$ for which we can construct the equalizer.
+
+Now our claim is that $\sheaf{F}(U)$ is such an equalizer. First
+notice that
+\begin{align*}
+  \pi_{k,l}\circ \iota (\sigma) &= \pi_{k,l} (\sigma_i)_{i\in I} \\
+                                &=\prod_{\ell \in I} \prod_{k\in
+                                  I}(\sigma_k\at{U_\ell\cap U_k}) \\
+                                &= \prod_{\ell \in I} \prod_{k\in
+                                  I}(\sigma_\ell\at{U_\ell\cap U_k})\\
+                                &= \pi_{\ell,k}\circ \iota (\sigma)
+\end{align*}
+which holds by the properties of a presheaf. It is also clear that
+such a $\sigma$ is unique by the identity axiom. On the other hand any
+$(\sigma_i)_{i\in I}$ such that $\pi_{k,l} (\sigma_i)_{i\in I} =
+\pi_{l,k} (\sigma_i)_{i\in I}$ comes from a unique element $\sigma$ in
+$\sheaf{F}(U)$ by glueing.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
