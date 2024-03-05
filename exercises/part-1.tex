@@ -132,6 +132,20 @@ open and non-empty.}
   generators for the ideal $I(C)$. Let $V = V(X^2 − YZ,XZ− X) \subset \field{A}^3(\field{k})$. Show that $V$ consists of three irreducible components and determine the corresponding prime ideals.
 \end{exercise}
 
+\begin{proof}
+  We have $I(C)=(Y-X^2,Z-X^3)\unlhd \field{k}[X,Y,Z]$ since $(x,y,z)\in C$ if and only if $y=x^2$ and $z=x^3$. We present two proofs to show that $C$ is irreducible:
+  
+  \textit{First proof}: To show that $I(C)$ is prime, we compute $\Gamma(C)=\field{k}[X,Y,Z]/I(C)$. We write $a:=Y-X^2$ and $b=Z-X^3$, then we use $R/(a,b)=(R/(a))/(\overline{b})$ for $r=\field{k}[X,Y,Z]$. The ring homomorphism $\varphi:\field{k}[X,Y,Z]\to \field{k}[X,Z]$ with $\varphi(X)=X$, $\varphi(Z)=Z$ and $\varphi(Y)=X^2$ has kernel $(Y-X^2)$, since for $f\in \ker \varphi$ we can do polynomial division by $Y-X^2$ and write $f=(Y-X^2)q+r$ with $\deg_Y r\geq 0$, i.e. $r\in \field{k}[X,Z]$. So we get $\varphi(f)=\varphi(r)=r$ and therefore $r=0$ and $f$ is a multiple of $Y-X^2$. Now we apply the same trick for $b$ and get $\Gamma(C)\cong \field{k}[X]$. This ring is an integral domain and therefore $C$ irreducible.
+
+  \textit{Second proof}: We show that $C$ is isomorphic to $\field{A}^1(\field{k})$, as affine algebraic sets. The maps $\varphi:C\to \field{A}^1(\field{k})$, $(x,y,z)\mapsto x$ and $\psi:\field{A}^1(\field{k})\to C$, $t\mapsto (t,t^2,t^3)$ are morphisms of algebraic sets and mutual inverses. Therefore they are isomorphisms and since $\field{A}^1(\field{k})$ is irreducible $C$ is also irreducible.
+
+For the second part a case analysis shows that $V=V_1\cup V_2\cup V_3$, where
+\begin{align*}
+  V_1=V(X,Y),\quad V_2=V(X,Z)\quad\text{and}\quad V_3=(Y-X^2,Z-1).
+\end{align*}
+Similar to the arguments above, we can compute $\Gamma(V_1)\cong \field{k}[Z]$, $\Gamma(V_2)\cong \field{k}[Y]$ and $\Gamma(V_3)\cong \field{k}[X]$ to see that each of these components is irreducible.
+\end{proof}
+
 \begin{exercise}
   See \cite[Exercise 1.14]{görtz2010algebraic}.
   Let $X$ be a prevariety and let $Y$ be an affine variety. Show that
