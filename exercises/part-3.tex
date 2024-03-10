@@ -94,7 +94,173 @@
   Trivial.
 \end{proof}
 
+\begin{exercise}[2.2.E]
+  See \cite[2.2.E]{vakil2024the-rising-sea}.
+  Let $\sheaf{F} (U)$ be the maps to $S$ that are locally constant,
+  i.e., for any point $p$ in $U$, there is an open neighborhood of $p$
+  where the function is constant. Show that this is a sheaf. (A better
+  description is this: endow $S$ with the discrete topology, and let
+  $\sheaf{F} (U)$ be the continuous maps $U\rightarrow S$.) This is
+  called the constant sheaf (with values in $S$); do not confuse it
+  with the constant presheaf. We denote this sheaf $\underline{S}$.
 
+  \vspace{\baselineskip}
+  
+  First we show that the constant presheaf is not a sheaf.
+\end{exercise}
+
+\begin{proof}
+  Let
+  \begin{align*}
+    \sheaf{F}\colon \Opens_X^{\op} \rightarrow \{S\}
+  \end{align*}
+  be a functor with $\abs{S}\geq 2$ defined by $\sheaf{F}(U)=S$ and
+  $\res_{V,U}=\id_S$ for all $V,U$. Then this is obviously a presheaf.
+  This is not a sheaf since for $x,y\in S$ and $U,V \subset X$ with $U
+  \cap V = \emptyset$ the sections $x\at{U}$ and $y\at{V}$ have no
+  glueing on $V\cup U$.
+
+  \vspace{\baselineskip}
+
+  For the second part see the next exercise.
+\end{proof}
+
+
+\begin{exercise}[2.2.F]
+  See \cite[2.2.F]{vakil2024the-rising-sea}.
+  Suppose $Y$ is a topological space. Show that ``continuous maps to $Y$''
+  form a sheaf of sets on $X$. More precisely, to each open set $U$ of $X$,
+  we associate the set of continuous maps of $U$ to $Y$. Show that this
+  forms a sheaf.
+\end{exercise}
+
+\begin{proof}
+  We define the sheaf in more detail:
+  \begin{align*}
+    \Fun[0](\cdot , Y) \colon \Opens_X^\op\rightarrow \Sets
+  \end{align*}
+  is defined by mapping an object $U\subset X$ open to $\Fun[0](U,Y)$
+  and a morphism $\iota_{V,U} \colon U \rightarrow V$ in $\Opens_X^\op$ to
+  $\iota^*_{V,U} \colon \Fun[0](V,Y) \rightarrow \Fun[0](U,Y)$ via
+  pullback. This is a sheaf since:
+  \begin{itemize}
+  \item $\res_{V,U} = \iota_U^*$ fulfill the functoriality, i.e. for
+    $V\subset W \subset U$ we have $\res_{U,V} = \iota_{V,U}^* = (\iota_{W,U}
+    \circ \iota_{V,W})^* = \iota_{V,W}^* \circ \iota_{W,U}^* =
+    \res_{W,V}\circ \res_{W,U}$ and $\res_{U,U}= \id_U^* = \id$.
+  \item Identity axiom holds, since it can be checked pointwise for functions.
+  \item For some open cover $\{U_i\}_{i\in I}$ of $X$ and $f_i\in
+    \Fun[0](U_i,Y)$ with $f_i\at{U_i\cap U_j} = f_j \at{U_i\cap U_j}$
+    for all $i,j$, we define $f\in \Fun[0](X,Y)$ by $f (p) = f_i(p)$
+    for $p\in U_i$. This is well defined since for $ p \in U_i \cap
+    U_j$ we have $f_i(p)=f_j(p)$.
+    This is continuous, since $f^{-1}(W) = \cup_{i\in I} f_i^{-1}(W)$
+    by definition for some $W\subset Y$ open.
+  \end{itemize}
+  We have thus checked that this indeed gives a sheaf. For $Y=S$ with
+  the discrete topology this reproduces the last exercise.
+\end{proof}
+
+\begin{exercise}[2.2.G]
+  See \cite[2.2.G]{vakil2024the-rising-sea}.
+  This is a fancier version of the previous exercise.
+  \begin{itemize}
+  \item (sheaf of sections of a map) Suppose we are given a
+    continuous map $\mu \colon Y \rightarrow X$. Show that ``sections of $\mu$'' form a
+    sheaf. More precisely, to each open set $U$ of $X$, associate the set
+    of continuous maps $s \colon U \rightarrow Y$ such that $\mu\circ
+    s = \id\at{U}$. Show that
+    this forms a sheaf. (For those who have heard of vector bundles,
+    these are a good example.) This is motivation for the phrase
+    ``section of a sheaf''.
+  \item (This exercise is for those who know what a topological group
+    is. If you don’t know what a topological group is, you might be
+    able to guess.) Suppose that $Y$ is a topological group. Show that
+    continuous maps to $Y$ form a sheaf of groups.
+  \end{itemize}
+\end{exercise}
+
+\begin{proof}
+  We define the following sheaf:
+  \begin{align*}
+    \Gamma_s(\cdot) \colon \Opens_X^\op \rightarrow \Sets
+  \end{align*}
+  by setting
+  \begin{align*}
+    \Gamma_\mu(U)= \{f\in \Fun[0](U,Y)\mid \mu\circ f = \id\at{U}\}
+  \end{align*}
+  and mapping an inclusion $\iota_{V,U} \colon U \rightarrow V$ in $\Opens_X^\op$ to
+  $\iota^*_{V,U} \colon \Fun[0](V,Y) \rightarrow \Fun[0](U,Y)$ via
+  pullback.
+  We need to show that this is well defined. We see this by
+  calculating $\mu \circ \res_{U,V}f = \mu \circ \iota_{V,U}^* f = \mu \circ f \at{V} = \id
+  \at{V}$ for $f\in \Gamma_\mu (U)$.
+  The functoriality follows analogously to the previous exercise.
+
+  The identity axiom also holds by equal argument.
+
+  For the gluability it remains to see that $f$ defined as before is
+  contained in $\Gamma_\mu(X)$. This can be checked pointwise:
+
+  For all $p\in X$ there is a $U_i$ in the open cover such that $p\in
+  U_i$. But then $\mu \circ f (p)= \mu \circ f \at{U_i} (p) = \mu
+  \circ f_i (p)= \id\at{U_i}(p) = p$. Since this holds for all $p\in
+  X$ we are done.
+
+  \vspace{\baselineskip}
+
+  For the second part we can consider the same sheaf as in the
+  previous exercise.
+
+  We define the group operation by
+  \begin{align*}
+    m\colon \Fun[0](U,Y)\times \Fun[0](U,Y) \rightarrow \Fun[0](U,Y)
+    ,\quad (f(p),g(p))\mapsto f(p)\cdot g(p)
+  \end{align*}
+  which is the pointwise operation. This is obviously well defined. It
+  remains to show that inverse exist. This is the case since for $f\in
+  \Fun[0](U,Y)$ we can define $f^{-1}\in \Fun[0](U,Y)$ by $f^{-1}(p)=
+  (f(p))^{-1}$. This is continuous since forming inverses is
+  continuous. The neutral element is obviously given by the constant
+  map to the group unit.
+\end{proof}
+
+\begin{exercise}[2.2.H]
+  See \cite[2.2.H]{vakil2024the-rising-sea}.
+  Suppose $\pi \colon X \rightarrow Y$ is a continuous map, and
+  $\sheaf{F}$ is a presheaf on $X$. Then define $\pi_*\sheaf{F}$ by
+  $\pi_*\sheaf{F} (V) =\sheaf{F}(\pi^{-1}(V))$, where $V$ is an open
+  subset of $Y$. Show that $\pi_*\sheaf{F}$ is a presheaf on $Y$, and
+  is a sheaf if $\sheaf{F}$ is. This is called the pushforward or
+  direct image of $\sheaf{F}$. More precisely, $\pi_*F$ is called the pushforward of $\sheaf{F}$ by $\pi$.
+\end{exercise}
+
+\begin{proof}
+  We define $\pi_*\res_{U,V}\colon \pi_*\sheaf{F}(U)\rightarrow
+  \pi_*\sheaf{F}(V)$ by $\pi_*\res_{U,V}=
+  \res_{\pi^{-1}(U),\pi^{-1}(V)}$. This is well defined, since for
+  $V\subset U$ also $\pi^{-1}(V)\subset \pi^{-1}(U)$. Then we fulfill
+  the conditions for a presheaf since $\res$ fulfills these
+  conditions.
+
+  To show that it is even a sheaf, we check identity and glueability:
+  For identity it is clear that for a cover $\{W_i\}_{i\in I}$ of $Y$
+  the set $\{U_i\coloneqq \pi^{-1}(W_i)\}_{i\in I}$ is an open cover
+  of $X$. Let $f,g\in \pi_*\sheaf{F}(Y)$ with $\pi_*\res_{Y,U_i}f=
+  \pi_*\res_{Y,W_i}g$ for all $W_i$. Then $f\in \sheaf{F}(X)$ with
+  $\res_{X,U_i}f= \res_{X,U_i}g$. Since the $U_i$ are an open cover $f
+  = g \in \sheaf{F}(X)$ follows, which implies that $f=g \in
+  \pi_*^{-1}\sheaf{F}(Y)$.
+
+  For the gluability pick $f_i \in \pi_*\sheaf{F}(W_i)$ with
+  $\pi_*\res_{W_i,W_i\cap W_j} f_i = \pi_*\res_{W_j,W_i\cap
+    W_j}f_j$. This means that for $f_i\in \sheaf{F}(U_i)$ we have
+  $\res_{U_i,U_i\cap U_j}f_i = \res_{U_j,U_i\cap U_j}f_j$. Since
+  $\sheaf{F}$ is a sheaf, we can glue the $f_i$ to get $f\in
+  \sheaf{F}(X)$ which corresponds to $f\in \pi_*\sheaf{F}(Y)$ with
+  $\pi_*\res_{Y,W_i}f = \res_{X,U_i}f = f_i$ by construction.
+  Thus $\pi_*\sheaf{F}$ is a sheaf if $\sheaf{F}$ is.
+\end{proof}
 
 %%% Local Variables:
 %%% mode: latex
