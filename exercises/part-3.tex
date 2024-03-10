@@ -1,0 +1,102 @@
+\chapter{Part 3}
+
+\section{Collection of exercises on the basics of sheaves}
+
+\begin{exercise}[2.1.A]
+  See \cite[2.1.A]{vakil2024the-rising-sea}.
+  Show that for the sheaf of $\Cinfty$ functions on a topological
+  space denoted with $\sheaf{O}$ the stalk $\sheaf{O}_p$ is a local
+  ring with maximal ideal given by
+  \begin{align*}
+    \mathfrak{m}_{p} = \{(f, U)\mid p\in U,\; f\in \sheaf{O}(U), \; f(p)=0\}.
+  \end{align*}
+\end{exercise}
+
+\begin{proof}
+  Let $I'\in \sheaf{O}_p$ be another maximal ideal not equal to
+  $\mathfrak{m}_p$. Then there exists a germ $(f, U)$ such that
+  $f(p)\neq 0$ in $I'$. This however is invertible, since for
+  $f(p)\neq 0$ there exists $V\subset U$ such that $f(x)\neq 0$ for
+  all $x\in V$. Then $(f^{-1},V)$ is a well defined germ in
+  $\sheaf{O}_p$ with $(f,U)\cdot (f^{-1},V) = (1,V)$ which is a
+  representative of $1\in \sheaf{O}_p$. This means that $I' =
+  \sheaf{O}_p$ and we are done. 
+\end{proof}
+
+\begin{exercise}[2.2.A]
+  See \cite[2.2.A]{vakil2024the-rising-sea}.
+  Show that the data of a $\category{C}$ valued presheaf on a topological space $X$ is
+  equivalent to a contravariant functor
+  \begin{align*}
+    \sheaf{F}\colon \Opens(X)^\op \rightarrow \category{C}
+  \end{align*}
+  from the category $\Opens(X)$ of the open sets of $X$ with morphisms
+  given by the inclusion of subsets. This is especially a directed set
+  and thus a nice category to work with.
+\end{exercise}
+
+\begin{proof}
+  The conditions that $\res_{U,U}= \id_{\sheaf{F}(U)}$ is and
+  $\res_{V,U}\circ\res_{W,V}= \res_{W,U}$ are just equivalent to the
+  functoriality of above functor.
+\end{proof}
+
+\begin{exercise}[2.2.B]
+  See \cite[2.2.B]{vakil2024the-rising-sea}.
+  Show that the following are presheaves on $\field{C}$ (with the
+  classical topology), but not sheaves:
+  \begin{itemize}
+  \item bounded functions,
+  \item holomorphic functions admitting a holomorphic square root.
+  \end{itemize}
+\end{exercise}
+
+\begin{proof}
+  For the bounded functions it is clear that the bounded open subsets
+  cover $\field{C}$, just consider the discs with radius $r\in
+  \naturals$. On each of those the function $f(z)=z$ is bounded, but
+  it does not glue to a globally bounded function.
+
+  Similarly the function $f(z)=z$ admits a holomorphic square root for
+  the two open subsets $\field{C}\setminus (0 , \infty)$ and
+  $\field{C}\setminus (-\infty ,0)$. These cover $\field{C}$. But it
+  does not admit a global holomorphic square root.
+\end{proof}
+
+\begin{exercise}[2.2.C]
+  See \cite[2.2.C]{vakil2024the-rising-sea}.
+  The identity and gluability axioms may be interpreted as saying that
+  $\sheaf(\cup_{i\in I}U_i)$ is a certain limit. What is that limit?
+\end{exercise}
+
+\begin{proof}
+  Gluability corresponds to the limit
+  \begin{align*}
+    \sheaf{F}(\cup_{i\in I}U_i) = \lim \left(
+    \cup_{i,j}\sheaf{F}(U_i\cap U_j) \leftleftarrows \cup_{k\in I} \sheaf{F}(U_k) \right)
+  \end{align*}
+  where the two arrows are given by $\res_{U_j,U_j\cap U_i}$ and
+  $\res_{U_i,U_j\cap U_i}$, see the notes for the equalizer definition
+  of sheaves for more detail.
+\end{proof}
+
+\begin{exercise}[2.2.D]
+  See \cite[2.2.D]{vakil2024the-rising-sea}.
+  \begin{itemize}
+  \item Verify that smooth functions, continuous functions, real-analytic
+    funcitons, plain real-valued functions, on a manifold or Rn are
+    indeed sheaves.
+  \item Show that real-valued continuous functions on (open sets of) a topological space $X$ form a sheaf.
+  \end{itemize}
+\end{exercise}
+
+\begin{proof}
+  Trivial.
+\end{proof}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

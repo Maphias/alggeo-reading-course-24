@@ -1,0 +1,18 @@
+\chapter{Part 3}
+
+\section{Collection of exercises on the basics of sheaves}
+
+\begin{exercise}[2.1.A]
+  See \cite[2.1.A]{vakil2024the-rising-sea}.
+  Show that for the sheaf of $\Cinfty$ functions on a topological
+  space denoted with $\sheaf{O}$ the stalk $\sheaf{O}_p$ is a local
+  ring with maximal ideal given by
+  \begin{align*}
+    \mathfrak{m}_{p} = \{(f, U)\mid p\in U,\; f\in \sheaf{O}(U), \; f(p)=0\}.
+  \end{align*}
+\end{exercise}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:
