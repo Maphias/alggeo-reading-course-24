@@ -62,6 +62,140 @@ $(\sigma_i)_{i\in I}$ such that $\pi_{k,l} (\sigma_i)_{i\in I} =
 \pi_{l,k} (\sigma_i)_{i\in I}$ comes from a unique element $\sigma$ in
 $\sheaf{F}(U)$ by glueing.
 
+\section{Cofinal functors between directed sets preserve colimits}
+
+We can generalize a directed set by a small category $I$ such that for
+all $i,j\in I$ there is an object $k\in i$ such that $\Hom(i,k) \neq
+\emptyset \neq \Hom(j,k)$ and such that for all $i,j$ we have $\abs{\Hom
+(i,j)}\in \{0,1\}$.
+
+We can define a cofinal functor as a functor between directed sets
+considered as a category $\functor{F}\colon I\rightarrow j$ such that
+for every $j\in J$ there is an $i\in I$ such that
+$\Hom(j,\functor{F}(i))\neq \emptyset$.
+
+We want to prove the following:
+
+\begin{proposition}
+  Let $I,J$ be directed sets considered as categories and
+  $\functor{G}\colon J\rightarrow \category{C}$ be a diagram such that
+  the colimits $\colim \functor{G}\circ \functor{F}$ and $\colim
+  \functor{G}$ exist.
+
+  If $\functor{F}\colon I\rightarrow J$ is a cofinal functor there is
+  a canonical isomorphism $\colim \functor{G} \cong \colim \functor{G}
+  \circ \functor{F}$.
+\end{proposition}
+
+\begin{proof}
+  First notice that there by representing property of a colimit we
+  have
+  \begin{align*}
+    \Nat(\functor{G}, \Const_c) \cong \Hom_{\category{C}}( \colim \functor{G} ,
+    c ),
+  \end{align*}
+  where $\Const$ is the constant functor at an object in
+  $\category{C}$.
+  This holds especially for the identity map of $\colim
+  \functor{G}$. Thus we obtain a natural transformation $\tau \colon
+  \functor{G} \Rightarrow \Const_{\colim \functor{G}}$ which
+  corresponds to a family of maps $\{\tau_j\colon
+  \functor{G}(j)\rightarrow \colim \functor{G}\}$.
+
+  Similarly we obtain a natural transformation $\tau'\colon
+  \functor{G} \circ \functor{F} \Rightarrow \Const_{\colim \functor{G}
+    \circ \functor{F}}$ corresponding to the family $\{\tau'_i \colon
+  \functor{G} \circ \functor{F}(i)\rightarrow \colim \functor{G} \circ
+  \functor{F} \}$
+
+  Now we need to find isomorphisms
+  \begin{align*}
+    \Phi \colon \colim \functor{G} \circ \functor{F} \leftrightarrow
+    \colim \functor{G} \colon \Psi.
+  \end{align*}
+  We do this by defining for any $j\in J$ a map $\psi_j \colon
+  \functor{G}(j)\rightarrow \colim \functor{G} \circ \functor{F}$ by
+  choosing an $\alpha \in \Hom (j, \functor{F}(i) ) $ for some $ i\in I$
+  and setting
+  \begin{align*}
+    \psi_j \coloneqq \tau_{i}'\circ \functor{G}(\alpha)
+  \end{align*}
+  We can show that this is independent of the choice of $\alpha$ since
+  for $\alpha \in \Hom(j, \functor{F}(k))$ there are maps $\sigma_{\functor{F}(k),
+    \ell}\colon \functor{F}(k) \rightarrow \functor{F}(\ell)$ and $\sigma_{\functor{F}(i), \functor{F}(\ell)}$ by
+  assumption on the set $J$ and the cofinality of $I$ and we get
+  \begin{align*}
+    \tau_{i}'\circ \functor{G} ( \alpha ) &=
+                                                        \tau_{k}'\circ
+                                                        \functor{G} (
+                                                        \alpha' )
+    \\
+    \Leftrightarrow \tau_{\ell}' \circ
+    \functor{G}(\functor{F}(\sigma_{i,\ell})) \circ
+    \functor{G}(\alpha)
+                                                      &= \tau_{\ell}' \circ
+                                                        \functor{G}(\functor{F}(\sigma_{k,\ell}))\circ
+                                                        \functor{G}(\alpha')
+    \\
+    \Leftrightarrow \tau_{\ell}' \circ
+    \functor{G}(\functor{F}(\sigma_{i,\ell}) \circ\alpha)
+                                                      &= \tau_{\ell}' \circ
+                                                        \functor{G}(\functor{F}(\sigma_{k,\ell})\circ
+                                                        \alpha')
+  \end{align*}
+  where we used that $\tau$ is a natural transformation to the
+  constant map on $\colim G$. The equality holds since
+  $\functor{F}(\sigma_{i,\ell})\circ \alpha =
+  \functor{F}(\sigma_{k,\ell}) \circ\alpha'$ holds in a
+  directed set.
+  
+  It is thus also easy to see that $\psi_j$ thus forms a natural
+  transformation from $\functor{G} $ to the constant
+  functor on $\colim \functor{G}\circ \functor{F}$. This induces a morphism
+  \begin{align*}
+    \Psi \colon \colim \functor{G} \rightarrow \colim \functor{G}\circ \functor{F}
+  \end{align*}
+  which is one of the maps we were looking for above.
+
+  Now conversely we can define for all $i\in I$ we can consider the
+  family of maps $\{\tau_{\functor{F}(i)}\}_{i\in I}$. These form a natural
+  transformation $\functor{G}\circ \functor{F} $ to the constant
+  functor on $\colim \functor{G}$. This induces a morphism
+  \begin{align*}
+    \Phi \colon \colim \functor{G} \circ \functor{F}\rightarrow \colim \functor{G}
+  \end{align*}
+  going in the other direction.
+  
+  To show that these are inverses, first note that $\Psi \circ \tau_j
+  = \psi_j$ and
+  \begin{align*}
+    \Phi \circ \psi_j = \Phi \circ \tau_{\functor{F}(i)}' \circ
+    \functor{G}(\alpha) =
+    \tau_{\functor{F}(i)} \circ
+    \functor{G}(\alpha) = \tau_j
+  \end{align*}
+  by the naturality of $\tau$.
+  We thus consider the following commuting diagram:
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1cm]
+      \functor{G}(j) \ar[r,"\tau_j"] \ar[rd, "\psi_j"]
+      \ar[rdd,"\tau_j"] & \colim \functor{G} \ar[d,"\Psi"]\\
+      & \colim \functor{G} \circ \functor{F} \ar[d,"\Phi"] \\
+      & \colim \functor{G}.
+    \end{tikzcd}
+  \end{equation}
+  This implies that $\Phi \circ \Psi
+ \circ \tau_j = \tau_j$ for all $\tau_j$, which implies $\Phi \circ
+ \Psi = \id$.
+ On the other hand since $\Phi \circ \tau_i' = \tau_{\functor{F}(i)}$
+ we get analogously
+ \begin{align*}
+   \Psi \circ \Phi \circ \tau_i' = \Psi \circ \tau_{\functor{F}(i)} =
+   \psi_{\functor{F}(i)} = \tau_{i}'
+ \end{align*}
+ and thus $\Psi \circ \Phi = \id$ which proves the statement.
+\end{proof}
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"
