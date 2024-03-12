@@ -262,6 +262,393 @@
   Thus $\pi_*\sheaf{F}$ is a sheaf if $\sheaf{F}$ is.
 \end{proof}
 
+\begin{exercise}[2.2.I]
+  See \cite[2.2.I]{vakil2024the-rising-sea}.
+  Suppose $\pi \colon X \rightarrow Y$ is a continuous map, and $\sheaf{F}$ is a sheaf of sets (or rings or $\ring{A}$-modules) on $X$. If $\pi(p) = q$, describe the natural morphism of stalks $(\pi_*\sheaf{F} )_q \rightarrow F_p$.
+\end{exercise}
+
+\begin{proof}
+  Using explicit forms of stalks we get
+  \begin{align*}
+    (\pi_*\sheaf{F})_q=\{(g,V)\mid q\in V, \; g\in \pi_*\sheaf{F}(V)\}/\sim
+  \end{align*}
+  and we map this to
+  \begin{align*}
+    \{(g\circ \pi,\pi^{-1}(V))\mid q\in V,\mid g\in \pi_*g\in
+    \pi_*\sheaf{F}(V)\}/\sim \subset \sheaf{F}_p.
+  \end{align*}
+  This is well defined since $f\sim g$ in $(\pi_*\sheaf{F})_q$ means
+  by continuity that there is $\pi^{-1}(W)\subset X$ with $q\in W$
+  such that $f\circ \pi = g\circ \pi$ on $\pi^{-1}(W)$.
+
+  For the universal approach we consider $\sheaf{F}_x = \colim_x
+  \sheaf{F}(U)$ where the colimit is taken over the directed set of
+  open subsets containing $x$.
+  Then we can consider
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.5cm]
+      \colim_q \pi_*\sheaf{F}(V)
+      \ar[r,"="]
+      \ar[rr,bend left=20,"\exists!"]
+      &
+      \colim_q \sheaf{F}(\pi^{-1}(V)) \ar[r,
+      hook ]
+      &
+      \colim_p \sheaf{F}(U)
+    \end{tikzcd}
+  \end{equation}
+  since the condition that $\pi$ is continuous is equivalent to the
+  condition that the subsets $\pi^{-1}(V)$ for neighbourhoods of $q$
+  are a cofinal subset of the neighbourhood basis of $p$, i.e. for all
+  $q\in W$ there exists $p\in V$ such that $\pi (V) \subset W$.
+
+  Then we could also derive this result since cofinal functors
+  preserve colimits, see notes.
+\end{proof}
+
+\begin{exercise}[2.2.J]
+  See \cite[2.2.J]{vakil2024the-rising-sea}.
+  If $(X, \sheaf{O}_X)$ is a ringed space, and $\sheaf{F}$ is an
+  $\sheaf{F}_X$-module, describe how for each $p \in X$, $\sheaf{F}_p$ is an $\sheaf{O}_{X,p}$-module.
+\end{exercise}
+
+\begin{proof}
+  We can take the limit over the following diagram
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.0cm]
+      \sheaf{O}_X(V)\times \sheaf{F}(V)
+      \ar[r, "\acts"]
+      \ar[d, "\res_{V,U}\times \res_{V,U}"]
+      &
+      \sheaf{F}(V)
+      \ar[d,"\res_{V,U}"]
+      \\
+      \sheaf{O}_X(U)\times \sheaf{F}(U)
+      \ar[r, "\acts"]
+      \ar[d, "\res_{U,W}\times \res_{U,W}"]
+      &
+      \sheaf{F}(U)
+      \ar[d,"\res_{U,W}"]
+      \\
+      \sheaf{O}_X(W)\times \sheaf{F}(W)
+      \ar[r, "\acts"]
+      \ar[d,dashed]
+      &
+      \sheaf{F}(W)
+      \ar[d, dashed]
+      \\
+      \colim_p \sheaf{O}_X\times \sheaf{F}
+      \ar[r,"\exists !"]
+      &
+      \colim_p \sheaf{F}
+    \end{tikzcd}
+  \end{equation}
+  Then the action of $\sheaf{O}_{X,p}$ is induced by the lowest
+  map. Explicitly we define $\sigma \acts f$ for $\sigma \in
+  \sheaf{O}_p$ and $f\in \sheaf{F}_p$ by defining for two
+  representatives $(\sigma,V)$ and $(f,U)$ on the restriction
+  $(\sigma,V)\acts (f,U) \coloneqq (\sigma\at{U\cap V}\acts f\at{U\cap
+    V}, U\cap V)$. This is well defined, since the action commutes with
+  the restriction maps.
+\end{proof}
+
+\begin{exercise}[2.3.A]
+  See \cite[2.3.A]{vakil2024the-rising-sea}.
+  If $\phi \colon \sheaf{F}\rightarrow \sheaf{G}$ is a morphism of presheaves on $X$, and $p \in X$, describe an induced morphism of stalks $\phi_p \colon \sheaf{F}_p \rightarrow \sheaf{G}_p$.
+\end{exercise}
+
+\begin{proof}
+  Again by the property that $\phi$ is a natural transformation, the
+  following diagram commutes:
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.0cm]
+      \sheaf{F}(V)
+      \ar[r, "\phi"]
+      \ar[d, "\res_{V,U}"]
+      &
+      \sheaf{G}(V)
+      \ar[d,"\res_{V,U}"]
+      \\
+      \sheaf{F}(U)
+      \ar[r, "\phi"]
+      \ar[d, "\res_{U,W}"]
+      &
+      \sheaf{G}(U)
+      \ar[d,"\res_{U,W}"]
+      \\
+      \sheaf{F}(W)
+      \ar[r, "\phi"]
+      \ar[d,dashed]
+      &
+      \sheaf{G}(W)
+      \ar[d, dashed]
+      \\
+      \colim_p \sheaf{F}
+      \ar[r,"\exists !\; \phi_p"]
+      &
+      \colim_p \sheaf{G}
+    \end{tikzcd}
+  \end{equation}
+  and thus for $\tau_U \colon \sheaf{G}(U)\rightarrow \colim_p
+  \sheaf{G}= \sheaf{G}_p$ the maps $\tau_U\circ \phi$ form a cone
+  $\{\tau_U\circ \phi \colon \sheaf{F}(U)\rightarrow
+  \sheaf{G}_p\}_{p\in U}$ which induces the morphism $\phi_p \colon
+  \sheaf{F}_p \rightarrow \sheaf{G}_p$ by universal property.
+\end{proof}
+
+\begin{exercise}[2.3.B]
+  See \cite[2.3.B]{vakil2024the-rising-sea}.
+  Suppose $\pi\colon  X \rightarrow Y$ is a continuous map of topological spaces (i.e., a morphism in the category of topological spaces). Show that pushforward gives a functor $\pi_*\colon \Sets_X \rightarrow \Sets_Y$. Here Sets can be replaced by other categories.
+\end{exercise}
+
+\begin{proof}
+  It is clear that $\pi_*\sheaf{F}(U)$ is a sheaf. It remains to show,
+  that for morphisms of $\Sets_X$ given by $\phi\colon \sheaf{F}\rightarrow
+  \sheaf{G}$ and $\psi \colon \sheaf{G}\rightarrow \sheaf{H}$ we have
+  for the composition
+  \begin{align}
+    \pi_*(\psi \circ \phi) = \pi_*(\psi)\circ \pi_*(\phi).
+  \end{align}
+  We define this functor on a morphism $\{\phi_U\colon
+  \sheaf{F}(U)\rightarrow \sheaf{G}(U)\}_{U \in \Opens_X}$ by
+  \begin{align}
+    \pi_*\phi \coloneqq \{\pi_*\phi_V \coloneqq
+    \phi_{\pi^{-1}(V)}\colon \pi_*\sheaf{F}(V)\rightarrow
+    \pi_*\sheaf{G}(V)\}_{V\in \Opens_Y}.
+  \end{align}
+  Then the functoriality is given by the following diagram:
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.5cm]
+      \pi_*\sheaf{F}(V) = \sheaf{F}(\pi^{-1}(V))
+      \ar[r,"\phi_{\pi^{-1}(V)}"]
+      \ar[d,"\pi_*\res_{V,W} = \res_{\pi^{-1}(V),\pi^{-1}(W)}"]
+      &
+      \pi_*\sheaf{G}(V) = \sheaf{G}(\pi^{-1}(V))
+      \ar[r,"\psi_{\pi^{-1}(V)}"]
+      \ar[d,"\pi_*\res_{V,W}= \res_{\pi^{-1}(V),\pi^{-1}(W)}"]
+      &
+      \pi_*\sheaf{H}(V) = \sheaf{H}(\pi^{-1}(V))
+      \ar[d,"\pi_*\res_{V,W}= \res_{\pi^{-1}(V),\pi^{-1}(W)}"]
+      \\
+      \pi_*\sheaf{F}(W) = \sheaf{F}(\pi^{-1}(W))
+      \ar[r,"\phi_{\pi^{-1}(V)}"]
+      &
+      \pi_*\sheaf{G}(W) = \sheaf{G}(\pi^{-1}(W))
+      \ar[r,"\psi_{\pi^{-1}(V)}"]
+      &
+      \pi_*\sheaf{H}(W) = \sheaf{H}(\pi^{-1}(W))
+    \end{tikzcd}
+  \end{equation}
+  and the fact that $\id_* \id_{\sheaf{F}} = \id_{\sheaf{F}}$ by construction. 
+\end{proof}
+
+\begin{exercise}[2.3.C]
+  See \cite[2.3.C]{vakil2024the-rising-sea}.
+  Suppose $\sheaf{F}$ and $\sheaf{G}$ are two sheaves of sets on $X$. (In fact, it will
+  suffice that $\sheaf{F}$ is a presheaf.) Let $\Hom(\sheaf{F} , \sheaf{G} )$ be the collection of
+  data
+  \begin{align*}
+    \Hom(\sheaf{F} , \sheaf{G} )(U) \coloneqq \Hom(\sheaf{F}\at{U},
+    \sheaf{G}\at{U}).
+  \end{align*}
+  (Recall the notation $\sheaf{G} \at{U}$, the restriction of the
+  sheaf to the open set $U$) Show that this is a sheaf of sets on
+  $X$. This sheaf is called ``sheaf Hom''.
+\end{exercise}
+
+\begin{proof}
+  Let $\sheaf{F}$ be a presheaf and $\sheaf{G}$ a sheaf. We define the
+  restriction maps for $V\subset U$ by
+  \begin{align*}
+    \res_{U,V} \colon \Hom(\sheaf{F} , \sheaf{G} )(U) \rightarrow
+    \Hom(\sheaf{F} , \sheaf{G} )(V), \quad \{\phi_W\}_{W\in \Opens_U} \mapsto
+    \{\phi_W\}_{W\in \Opens_V}
+  \end{align*}
+  This is well defined, since $ \{\phi_W\}_{W\in \Opens_V}$ is still a
+  natural transformation $\sheaf{F}\at{V}\rightarrow \sheaf{G}\at{V}$.
+
+  Now for the functoriality it is clear that this holds since we just
+  make our set of morphisms in the natural transformation smaller,
+  i.e. forgetting stuff is functorial.
+
+  For the identity we consider a covering $\{U_i\}_{i\in I}$ of
+  $X$. Then for two natural transformations $f,g\colon \sheaf{F}
+  \rightarrow \sheaf{G}$ such that $\{f_W\}_{W\in \Opens_{U_i}} =
+  \{f_W\}_{W\in \Opens_{U_i}}$ we need to show that for any open set
+  $V\subset X$ we have $f_V = g_V$. Then the set $\{U_i\cap V\}_{\i\in
+    I}$ is an open covering of $U$ and $\res_{V,U_i\cap V}f_V =
+  \res_{V,U_i\cap V}g_V$ since we assumed that $\{f_W\}_{W\in \Opens_{U_i}} =
+  \{f_W\}_{W\in \Opens_{U_i}}$ and $U_i\cap V$ is open in $U_i$. Thus, since $\sheaf{G}\at{V}$ is a sheaf,
+  we have $f_V = g_V$, which means that $\{f_V\}_{V\in \Opens_X}=
+  \{g_V\}_{V\in \Opens_X}$.
+
+  For the gluability we consider the set $\{\{f_W^i\}_{W\in
+    \Opens_{U_i}}\}_{i\in I}$ such that
+  \begin{align*}
+    \{f^i_W\}_{W\in \Opens_{U_i\cap
+    U_j}} = \{f^j_W\}_{W\in \Opens_{U_i\cap
+    U_j}}.
+  \end{align*}
+  We have to construct a global
+  $\{f_V\}_{V\in \Opens_X}$, i.e. we need to define an $f_V$ for all
+  open subsets of $X$. It is clear again that $\{U_i\cap V\}_{i\in I}$
+  is an open cover of $V$. Then the maps $\{f^i_{U_i\cap V}\}_{i\in
+    I}$ fulfill the condition that on $U_i \cap U_j \cap V$ we have
+  $f^i_{U_i\cap V}\at{U_j \cap V} = f^i_{U_i\cap U_j\cap V} =
+  f^j_{U_i\cap U_j\cap V} = f^j_{U_j \cap V}\at{U_i}$ and we can thus
+  glue these to a map $f\at{V}$. Then the set $\{f_V\}_{V\in
+    \Opens_X}$ fulfills the demands.  
+\end{proof}
+
+\begin{exercise}[2.3.D]
+  See \cite[2.3.D]{vakil2024the-rising-sea}.
+  \begin{itemize}
+  \item If $\sheaf{F}$ is a sheaf of sets on $X$, then show that
+    $\Hom(\{p\}, \sheaf{F} ) \cong \sheaf{F}$, where $\{p\}$ is the
+    constant sheaf “with values in the one element set $\{p\}$”.
+  \item If $\sheaf{F}$ is a sheaf of abelian groups on $X$, then
+    show that $\Hom_{\Ab} (\underline{Z}, \sheaf{F} )\cong
+    \sheaf{F}$ (an isomorphism of sheaves of abelian groups).
+  \item If $\sheaf{F}$ is an $\sheaf{O}_X$-module, then show that
+    $\Hom_{\Modules_{\sheaf{O}_X}} (\sheaf{O}_X,\sheaf{F} ) \cong
+    \sheaf{F}$ (an isomorphism of OX-modules).
+  \end{itemize}
+\end{exercise}
+
+\begin{proof}
+  For the first part notice that for any $U\in \Opens_X$ the set
+  $\Hom(\{p\}\at{U},\sheaf{F}\at{U})(V)$ is given by the elements of
+  $\sheaf{F}\at{U}(V)$. The isomorphism is thus given by
+  $\Hom(\{p\}\at{X},\sheaf{F}\at{X})(V)\cong \sheaf{V}$.
+
+  The similar argument holds in the second case, since the morphisms of
+  $\underline{Z}\at{U}(V)\rightarrow \sheaf{F}\at{U}(V)$ corresponds
+  to the subgroups generated by a unique element.
+
+  The same argument holds for the last statement.
+\end{proof}
+
+\section{Compatible germs}
+
+\begin{exercise}[2.4.A]
+  See \cite[2.4.A]{vakil2024the-rising-sea}.
+  The natural map
+  \begin{align*}
+    \sheaf{F}(U)\rightarrow \prod_{p\in U} \sheaf{F}_p
+  \end{align*}
+  is injective.
+\end{exercise}
+
+\begin{proof}
+  Consider for each $U\in \Opens_X$ and $\sheaf{F}\in \category{C}_X$
+  the set $\prod_{p\in U} \sheaf{F}_p$. This mapping
+  \begin{align*}
+    \sheaf{F}(U)\rightarrow \prod_{p\in U} \sheaf{F}_p
+  \end{align*}
+  is injective. For $f,g\in \sheaf{F}$ such that $f_p = g_p$ for all
+  $p\in U$. Then there are open subsets $U_p\subset U$ and
+  representatives $(\tilde{f},U_p)$ and $(\tilde{g},U_p)$ (do this by
+  picking representatives and restricting to the intersection of their
+  domain of definition) such that $\tilde{f}=\tilde{g}$. The set
+  $\{U_p\}_{p\in U}$ is an open cover of $U$ and thus by the identity
+  axiom of a sheaf $f=g$ holds.
+\end{proof}
+
+\begin{definition}
+  We say that an element $(s_p)_{p\in U}$ of the right side
+  $\prod_{p\in U} \sheaf{F}_p$ of the previous exercise consists of
+  compatible germs if for all $p\in U$, there is some representative
+  \begin{align*}
+    (\tilde{s}_p \in \sheaf{F}(U_p), \; U_p \text{ open in }U);
+  \end{align*}
+  for $s_p$ (where $p\in U_p$) such that the germ of $\tilde{s}_p$ at
+  all $q \in U_p$ is $s_q$. Equivalently, there is an open cover
+  $\{U_i\}$ of $U$, and sections $f_i \in \sheaf{F} (U_i)$, such that
+  if $p \in U_i$, then $s_p$ is the germ of $f_i$ at $p$. Clearly any
+  section $s$ of $F$ over $U$ gives a choice of compatible germs for
+  $U$.
+
+  We denote the set of $(s_p)_{p\in U}\in \prod_{p\in U} \sheaf{F}_p$
+  such that it consists of compatible germs by $\CGerms_{\sheaf{F}}(U)$.
+\end{definition}
+
+\begin{exercise}[2.4.B]
+  See \cite[2.4.B]{vakil2024the-rising-sea}.
+  Prove that any choice of compatible germs for a sheaf of sets
+  $\sheaf{F}$ over $U$ is the image of a section of $F$ over $U$.
+\end{exercise}
+
+\begin{proof}
+  For an element $(s_p)_{p\in U}\in
+  \prod_{p\in U}\sheaf{F}_p$ in the set of compatible germs, we can
+  for all $p\in U$ 
+  find a representative  $\tilde{s}_p\in \sheaf{F}(U_p)$ for some
+  $U_p$.
+  The sets $U_p$ are an open cover of $U$.
+  We need to check that for $U_q \cap U_p\neq \emptyset$ we have
+  $\tilde{s}_p\at{U_q \cap U_p} = \tilde{s}_q\at{U_q \cap U_p}$. We
+  see this, since for all $x \in U_q\cap U_p$ we have
+  $(\tilde{s}_p\at{U_q \cap U_p})_x = (\tilde{s}_q\at{U_q \cap U_p})_x
+  = s_x$. This means that there is a neigbourhood $V_x$ such that
+  $\tilde{s}_p\at{V_x} = \tilde{s}_q\at{V_x}$ and these $V_x$ cover
+  $U_p \cap U_q$. Thus applying the gluability, we get
+  $\tilde{s}_p\at{U_q \cap U_p} = \tilde{s}_q\at{U_q \cap U_p}$. Thus
+  we can again apply gluability to obtain a section
+  $\tilde{s}\in \sheaf{F}(U)$.
+\end{proof}
+
+\begin{proposition}
+  We can consider the functor defined by
+  \begin{align*}
+    \CGerms_\sheaf{F}\colon \Opens_X^\op \rightarrow \Sets, \;
+    U\mapsto \CGerms_{\sheaf{F}}(U),
+  \end{align*}
+  An inclusion $\iota V\rightarrow U$ is mapped to the map
+  $\prod_{p\in V}\pr_{p} $ of sets. This functor is
+  naturally isomorphic to the sheaf $\sheaf{F}\in \Sets_X$.
+\end{proposition}
+
+\begin{proof}
+  First notice that $\CGerms_\sheaf{F}$ is a functor at all. This
+  holds since $\prod_{p\in U} \pr_{p} \prod_{p\in U}\{s_p\} =
+  \prod_{p\in U}\{s_p\}$ and $\prod_{p\in W} \pr_{p} \prod_{p\in V}
+  \pr_{p} = \prod_{p\in W} \pr_{p}$. We define the natural isomorphism
+  \begin{align*}
+    \eta_U \colon \CGerms_\sheaf{F} (U) \rightarrow \sheaf{F}(U)
+  \end{align*}
+  by
+  mapping an element of compatible germs to the unique section defined
+  in the previous exercise. The inverse for this is given by the
+  canonical map $\sheaf{F}(U) \rightarrow \prod_{p\in U} \sheaf{F}_p$
+  as we have seen in the previous exercises.
+
+  Now to check that $\eta $ is a natural transformation:
+  \begin{equation}
+    \begin{tikzcd}[nodes in empty cells, column sep= 1.5cm, row sep=1.5cm]
+      \CGerms_\sheaf{F} (U)
+      \ar[r, "\prod_{p\in W} \pr_{p}" ]
+      \ar[d, "\eta_U"]
+      &
+      \CGerms_\sheaf{F} (W)
+      \ar[d, "\eta_W"]
+      \\
+      \sheaf{F}(U)
+      \ar[r,"\res_{U,W}"]
+      &
+      \sheaf{F}(W)
+    \end{tikzcd}
+  \end{equation}
+  For an element $(s_p)_{p\in U}$ there is a unique section $\eta_U
+  ((s_p)_{p\in U}) \in \sheaf{F}(U)$ which we restrict to $W$. This
+  restriction does not change the germs $\eta_U
+  ((s_p)_{p\in U})_p$ for all $p\in W$.
+
+  Thus by a similar argument to (2.4.B) we obtain $\eta_w(s_p)_{p\in
+    W} =  \res_{U,W}\eta_U
+  ((s_p)_{p\in U})$ which shows that $\eta$ is a natural isomorphism.
+\end{proof}
+
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"
